@@ -1,48 +1,23 @@
 #include <stdio.h>
 
-void bubbleSort(int arr[], int n)
-{
-  int i, j, temp;
-  int numSwaps[n];
-
-  // Initialize numSwaps array to count
-  for (i = 0; i < n; i++){
-    numSwaps[i] = 0;}
-
-  for (i = 0; i < n - 1; i++){
-      for (j = 0; j < n - i - 1; j++)  {
-        if (arr[j] > arr[j + 1]){
-          temp = arr[j];
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
-          numSwaps[j] += 1; 
-} } }
-
-  // Print the number of swaps for each index
-  for (i = 0; i < n; i++)
-    printf("Index %d: %d swaps\n", i, numSwaps[i]);
-}
-
-int main()
-{
+int main() {
     int arr[] = {97, 16, 45, 63, 13, 22, 7, 58, 72};
     int n = sizeof(arr) / sizeof(arr[0]);
+    int i, j, temp, swaps;
 
-    printf("The given array:\n");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
+    for (i = 0; i < n-1; i++) {
+        swaps = 0;
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                swaps++;
+            }
+        }
+        printf("Swaps needed for pass %d: %d\n", i+1, swaps);
     }
-    printf("\n");
-
-    bubbleSort(arr, n);
-    printf("\n");  
-    printf("Sorted array after running Bubble Sort:\n");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
 
     return 0;
 }
+
